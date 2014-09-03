@@ -1,6 +1,6 @@
 [user]
-	name = andyque
-	email = guanghui8827@126.com
+	name = hansehnu
+	email = hanshenu@gmail.com
 [mergetool]
 	keepBackup = true
 [alias]
@@ -32,7 +32,7 @@ di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD 
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [github]
-	user = andyque
+	user = hanshenu
 [push]
 	default = matching
 [branch]

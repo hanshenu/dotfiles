@@ -1,6 +1,6 @@
 " VIM Configuration File
 " Copyright: Common CC 3.0
-" Author: guanghui qu 
+" Author: hanshenu 
 "
 set nocompatible
 filetype off
@@ -117,7 +117,7 @@ set wildignore=*.pdf
 "search" {{{
 set incsearch
 set hls
-nnoremap <silent> <leader>nl :<C-u>nohlsearch<CR><C-l>
+nnoremap <silent> <leader>xl :<C-u>nohlsearch<CR><C-l>
 nnoremap <silent> <C-c> :%s///gn<cr>
 vnoremap < <gv
 vnoremap > >gv
@@ -144,21 +144,6 @@ let g:ProjTags = [["~/workspace/cocos2d-html5", "~/.vim/tags/cocos2d-html5/cocos
 let g:ProjTags += [["~/workspace/cocos2d-x","~/.vim/tags/cocos2d-x/cocos2dx/tags","~/.vim/tags/cocos2d-x/chipmunk/tags","~/.vim/tags/cocos2d-x/Box2d/tags","~/.vim/tags/cocos2d-x/CocosDenshion/tags","~/.vim/tags/cocos2d-x/extensions/tags"]]
 let g:ProjTags += [[ "~/workspace/opencv","~/.vim/tags/opencv/tags" ]]
 "}}}
-
-" configure for DoxygenToolkit plugin {{{
-let g:DoxygenToolkit_briefTag_pre="@brief "
-let g:DoxygenToolkit_paramTag_pre="@param "
-let g:DoxygenToolkit_returnTag="@Returns "
-let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
-let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------"
-let g:DoxygenToolkit_authorName="guanghui.qu <guanghui8827@126.com>"
-let g:DoxygenToolkit_licenseTag="MIT License"
-"create doxygen comment
-map <leader>dd :Dox<CR>
-map <leader>da :DoxAuthor<Cr>
-map <leader>dl :DoxLic<cr>
-"}}}
-
 
 
 "plugins key maps" {{{
@@ -227,12 +212,12 @@ nnoremap k gk
 nnoremap <leader>fef :normal! gg=G``<CR>
 
 " upper/lower word
-nmap <leader>u mQviwU`Q
-nmap <leader>l mQviwu`Q
+"nmap <leader>u mQviwU`Q
+"nmap <leader>l mQviwu`Q
 
 " upper/lower first char of word
-nmap <leader>U mQgewvU`Q
-nmap <leader>L mQgewvu`Q
+"nmap <leader>U mQgewvU`Q
+"nmap <leader>L mQgewvu`Q
 
 " cd to the directory containing the file in the buffer
 nmap <silent> <leader>cd :lcd %:h<CR>
@@ -280,14 +265,14 @@ let g:syntastic_enable_balloons = 1
 
 "set colorscheme {{{
 syntax enable
-colorscheme blackboard
-if has("gui_running")
-colorscheme solarized
-let s:uname = system("uname")
-if s:uname == "Darwin\n"
-set guifont=PowerlineSymbols
-endif
-endif
+colorscheme wombat256
+"if has("gui_running")
+"colorscheme solarized
+"let s:uname = system("uname")
+"if s:uname == "Darwin\n"
+"set guifont=PowerlineSymbols
+"endif
+"endif
 "}}}
 
 "config tagbar plugin {{{
@@ -485,7 +470,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "}}}
 
 "auto reload vimrc configuration {{{
-au BufWritePost .vimrc so ~/.vimrc
+"au BufWritePost .vimrc so ~/.vimrc
 nmap <leader>vv :tabedit $MYVIMRC<CR>
 "}}}
 
@@ -615,47 +600,65 @@ nnoremap / /\v
 vnoremap / /\v
 "}}}
 
-"mappings ctrl-s to save {{{
-nnoremap <silent> <C-S> :<C-u>Update<CR>
-" Use CTRL-S for saving, also in Insert mode
-noremap <C-S> :update<CR>
-vnoremap <C-S> <C-C>:update<CR>
-inoremap <C-S> <C-O>:update<CR>
-"}}}
+    "mappings ctrl-s to save {{{
+    nnoremap <silent> <C-S> :<C-u>Update<CR>
+    " Use CTRL-S for saving, also in Insert mode
+    noremap <C-S> :update<CR>
+    vnoremap <C-S> <C-C>:update<CR>
+    inoremap <C-S> <C-O>:update<CR>
+    "}}}
 
 
-"change you complete me plugin default mappings"{{{
-"refer to this blog post :http://0x3f.org/blog/make-youcompleteme-ultisnips-compatible/
+    "change you complete me plugin default mappings"{{{
+    "refer to this blog post :http://0x3f.org/blog/make-youcompleteme-ultisnips-compatible/
 
-"if your os is win, then disable the ycm plugin
-if os=="win"
-let g:loaded_youcompleteme = 1
-endif
-let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-Tab>'
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let g:ycm_confirm_extra_conf = 1
-let g:ycm_global_ycm_extra_conf="~/.vim/.ycm_extra_conf.py"
-let g:tern_show_argument_hints='on_hold'
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-"}}}
+    "if your os is win, then disable the ycm plugin
+    if os=="win"
+    let g:loaded_youcompleteme = 1
+    endif
+    let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
+    let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
+    let g:SuperTabDefaultCompletionType = '<C-Tab>'
+    nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+    let g:ycm_confirm_extra_conf = 1
+    let g:ycm_global_ycm_extra_conf="~/.vim/.ycm_extra_conf.py"
+    let g:tern_show_argument_hints='on_hold'
+    let g:indent_guides_start_level = 2
+    let g:indent_guides_guide_size = 1
+    "}}}
 
-"add gist plgin {{{
-let g:gist_open_browser_after_post =1
-"}}}
+    "add gist plgin {{{
+    let g:gist_open_browser_after_post =1
+    "}}}
 
 "add powerline plugin config{{{
 " let g:Powerline_symbols = 'fancy'
 "}}}
 
 "key maps for gitgutter {{{
-nmap <Leader>gs <Plug>GitGutterStageHunk
-nmap <Leader>gr <Plug>GitGutterRevertHunk
+"nmap <Leader>gs <Plug>GitGutterStageHunk
+"nmap <Leader>gr <Plug>GitGutterRevertHunk
 "}}}
 
 "key maps for vim-airline {{{
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tabline#close_symbol = 'X'
+
 let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = '≡'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.readonly = '㊢'
 "}}}
