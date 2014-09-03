@@ -71,3 +71,7 @@ Bundle  'bufexplorer.zip'
 "Bundle  'calendar.vim--Matsumoto'
 "Bundle  'DoxygenToolkit.vim'
 Bundle  'ZoomWin'
+Bundle  'DfrankUtil'
+
+
+Bundle 'vim-scripts/vimprj'
