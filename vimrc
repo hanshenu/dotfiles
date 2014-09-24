@@ -5,55 +5,17 @@
 set nocompatible
 filetype off
 
-function! GetRunningOS()
-  if has("win32")
-    return "win"
-  endif
-  if has("unix")
-    if system('uname')=~'Darwin'
-      return "mac"
-    else
-      return "linux"
-    endif
-  endif
-endfunction
-
-let os = GetRunningOS()
-
-if os=="win"
-set guioptions-=m
-set guioptions-=T
-language message zh_CN.utf-8
-endif
-
-
 "Let Vundle manage Vbundle{{{
-if os == "mac" || os == "linux"
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-endif
-
-if os == "win"
-set rtp+=~/dotfiles/bundle/vundle/
-let path='~/dotfiles/bundle'
-call vundle#rc(path)
-endif
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" source vundle plugis
+source ~/.vim/bundles.vim
+call vundle#end()
 "}}}
 
-" source vundle plugis
-if os == "win"
-source ~/dotfiles/bundles.vim
-else
-source ~/.vim/bundles.vim
-endif
 
 filetype plugin indent on
 
-"keymaping for golang{{{"
-filetype off
-filetype plugin indent off
-set rtp+=$GOROOT/misc/vim
-"}}}
 
 " load plugins that ship with Vim {{{
 filetype on
@@ -77,9 +39,6 @@ set fenc=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8
 set encoding=utf-8  "if not set, the powerline plugins won't work 
-if os == "win"
-    set fileencoding=chinese
-endif
 set autoindent
 set tabstop=4        " tab width is 4 spaces
 set shiftwidth=4     " indent also with 4 spaces
@@ -613,9 +572,6 @@ vnoremap / /\v
     "refer to this blog post :http://0x3f.org/blog/make-youcompleteme-ultisnips-compatible/
 
     "if your os is win, then disable the ycm plugin
-    if os=="win"
-    let g:loaded_youcompleteme = 1
-    endif
     let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
     let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
     let g:SuperTabDefaultCompletionType = '<C-Tab>'
@@ -674,3 +630,4 @@ nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 xnoremap p pgvy
+
